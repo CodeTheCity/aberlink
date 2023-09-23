@@ -3,7 +3,8 @@ const storage = require('node-persist');
 const request = require('request');
 require('dotenv').config();
 
-const URL = process.env.URL;
+const URL = process.env.URL || "api.aberlink.jbritain.net";
+const SITE_URL = process.env.SITE_URL || "aberlink.jbritain.net";
 
 async function loadCounter(){
   let counter = parseInt(await storage.getItem("counter"));
@@ -63,5 +64,6 @@ app.get("/qr/:loc", (req, res) => {
 })
 
 app.listen(8080, () => {
+  console.log(`Using URL ${URL}`)
   console.log(`Listening at http://localhost:${8080}`);
 })
