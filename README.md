@@ -1,6 +1,7 @@
 # aberlink
 A prototype system for directing tourists and residents alike from busy and popular parts of Aberdeen to those which are less popular, and less busy.
-Developed by Josh Britain and Caitlin Thaeler. Additional help from Fariha Ibhnat, Iain Maki Guan, Andreas Maita, and Holly Sinclair.
+Built for the [Code the City Hack Weekend 30](https://codethecity.org/what-we-do/hack-weekends/ctc30/).
+Developed by Josh Britain and Caitlin Thaeler, with additional help/moral support from Fariha Ibhnat, Iain Maki Guan, Andreas Maita, and Holly Sinclair.
 
 ## Design
 
