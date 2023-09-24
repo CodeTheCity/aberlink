@@ -37,3 +37,25 @@ div .overlay.left {
 div .overlay.right {
     right: 0;
 }
+
+@keyframes celebrationAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+.visited-text {
+    font-size: 24px;
+    color: #ff5722; /* Adjust the color as needed */
+    animation: celebrationAnimation 1s ease-in-out infinite; /* Use the animation */
+  
+}

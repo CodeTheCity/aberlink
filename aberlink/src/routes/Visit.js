@@ -14,10 +14,9 @@ const Visit = () => {
   return (
 
     <div className="frame">
-      <div class="overlay left"/>
-      <div class="overlay right"/>
-      <VideoStream embedId={'E9iP8jdtYZ0'} />
-      <Interface loc={id} />
+        <img src="" alt=""/>
+      <p className="visited-text">You have visited location {id}!
+      </p>
     </div>
   )
 }
