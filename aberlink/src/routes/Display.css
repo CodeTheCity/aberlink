@@ -53,7 +53,12 @@ div .overlay.right {
     }
   }
 
-.visited-text {
+
+.visited {
+    font-size: 24px;
+}
+
+.visited.both {
     font-size: 24px;
     color: #ff5722; /* Adjust the color as needed */
     animation: celebrationAnimation 1s ease-in-out infinite; /* Use the animation */
