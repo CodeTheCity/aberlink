@@ -2,13 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
-import Display from './routes/display';
+import Display from './routes/Display';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Display />} />
+        <Route path="/display/:id" element={<Display />} />
       </Routes>
     </>
   );
