@@ -24,12 +24,14 @@ const Counter = props => {
         setCount(await getCount());
     }, 1000);
 
+
     return (
         <>
         <div className="text">
             <h1>COUNTER: </h1>
-            <div className="count">
+            <div className="counter">
                 <h1>{count}</h1>
+                
             </div>
         </div>
            
