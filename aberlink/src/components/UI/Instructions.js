@@ -1,10 +1,10 @@
 import React from 'react';
 
-
+import './Interface.css';
 const Instructions = props => {
 
     return (
-        <div>
+        <div className="text">
             <p>Scan QR code here</p>
         </div>
     )
