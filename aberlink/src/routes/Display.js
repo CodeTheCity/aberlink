@@ -12,7 +12,7 @@ const Display = () => {
   return (
     <div className="display">
     <VideoStream embedId={'E9iP8jdtYZ0'} />
-    <Interface />
+    <Interface loc={id} />
     
     </div>
   )
