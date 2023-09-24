@@ -25,14 +25,10 @@ var app = express();
 app.use(cors());
 app.use(cookieParser());
 
-app.get("/visit/:loc", (req, res) => {
+app.get("/visit/:loc/:uuid", (req, res) => {
   const loc = req.params.loc;
   
-  let id = req.cookies.id;
-  if (!id){
-    id = uuidv4();
-    res.cookie('id', id);
-  }
+  let id = req.params.uuid;
 
   if(!visitors[id]){
     visitors[id] = new Object;
@@ -43,14 +39,21 @@ app.get("/visit/:loc", (req, res) => {
     visitors[id].visitedLocations.push(loc);
   }
 
-  linkedloc = locations[loc].linkedTo;
-  if (visitors[id].visitedLocations.includes(linkedloc.toString())){
-    if (!completedUsers.includes(id)){
-      completedUsers.push(id);
+  if (locations[loc]){
+    linkedloc = locations[loc].linkedTo;
+    if (visitors[id].visitedLocations.includes(linkedloc.toString())){
+      if (!completedUsers.includes(id)){
+        completedUsers.push(id);
+      }
     }
   }
+    
 
-  res.status(200).send(visitors[id].visitedLocations);
+  res.status(200).send({
+    locations: visitors[id].visitedLocations,
+    id: id
+    
+  });
 })
 
 app.get("/counter", (req, res) => {
