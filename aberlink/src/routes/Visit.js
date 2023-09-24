@@ -18,7 +18,7 @@ const Visit = () => {
   }
 
   let uuid = cookies.get("uuid")
-
+  let visited = [];
   useEffect(() => {
     
     console.log("sending...")
@@ -26,17 +26,18 @@ const Visit = () => {
     fetch(`${global.config.API_URL}/visit/${id}/${uuid}`)
     .then(res => res.json())
     .then(json => {
-      
+      visited = json.locations
     })
   });
-  
 
+  let visitedAll = visited.length === 2;
+
+  let visitedText = visitedAll ? "Thanks for visiting both locations!" : `You have visited location ${id}.`
+  
   return (
 
     <div className="frame">
-        <img src="" alt=""/>
-      <p className="visited-text">You have visited location {id}!
-      </p>
+      <p className={`visited ${visitedAll && 'both'}`}>{visitedText}</p>
     </div>
   )
 }

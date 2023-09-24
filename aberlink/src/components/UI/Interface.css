@@ -29,9 +29,7 @@
 
 .counter {
     background-position-x: center;
-    display: inline-block;
     float: right;
-
 }
 
 .counter > h1 {

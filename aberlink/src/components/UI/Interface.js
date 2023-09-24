@@ -11,7 +11,7 @@ const Interface = props => {
     return (
         <div className="interface">
             <Counter />
-            <Instructions />
+            <Instructions loc={props.loc}/>
             <QRcode loc={props.loc} />
         </div>
     )
