@@ -1,28 +1,11 @@
 const express = require("express");
-const storage = require('node-persist');
-const request = require('request');
 require('dotenv').config();
 
 const URL = process.env.URL || "api.aberlink.jbritain.net";
 const SITE_URL = process.env.SITE_URL || "aberlink.jbritain.net";
 
-async function loadCounter(){
-  let counter = parseInt(await storage.getItem("counter"));
-  return counter;
-}
-
-let counter;
-
 let visitors = new Object;
-
-(async () => {
-  await storage.init();
-  counter = await loadCounter();
-})
-
-if (!counter){
-  counter = 0;
-};
+let counter = 0;
 
 
 var app = express();
@@ -60,7 +43,7 @@ app.post("/reset", (req, res) => {
 })
 
 app.get("/qr/:loc", (req, res) => {
-  res.redirect(`https://api.qrserver.com/v1/create-qr-code?data=https://${URL}/visit/${req.params.loc}`);
+  res.redirect(`https://api.qrserver.com/v1/create-qr-code?data=https://${SITE_URL}/visit/${req.params.loc}`);
 })
 
 app.listen(8080, () => {
