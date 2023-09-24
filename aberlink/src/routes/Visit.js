@@ -30,7 +30,7 @@ const Visit = () => {
     })
   });
 
-  let visitedAll = visited.length === 2;
+  let visitedAll = visited.length > 1;
 
   let visitedText = visitedAll ? "Thanks for visiting both locations!" : `You have visited location ${id}.`
   
