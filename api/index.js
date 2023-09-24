@@ -1,37 +1,60 @@
 const express = require("express");
 require('dotenv').config();
 const cors = require('cors');
+const { v4: uuidv4 } = require('uuid');
+const cookieParser = require('cookie-parser')
 
 const URL = process.env.URL || "api.aberlink.jbritain.net";
 const SITE_URL = process.env.SITE_URL || "aberlink.jbritain.net";
 
 let visitors = new Object;
-let counter = 0;
+let completedUsers = [];
 
+const locations = {
+  1: {
+    locname: "location 1",
+    linkedTo: 2,
+  },
+  2: {
+    locname: "location 2",
+    linkedTo: 1
+  }
+}
 
 var app = express();
 app.use(cors());
+app.use(cookieParser());
 
 app.get("/visit/:loc", (req, res) => {
   const loc = req.params.loc;
   
-  let ip = req.socket.remoteAddress;
-  ip = ip.replace("::ffff:", "");
+  let id = req.cookies.id;
+  if (!id){
+    id = uuidv4();
+    res.cookie('id', id);
+  }
 
-  if(!visitors[ip]){
-    visitors[ip] = new Object;
-    visitors[ip].visitedLocations = [];
+  if(!visitors[id]){
+    visitors[id] = new Object;
+    visitors[id].visitedLocations = [];
   }
   
-  if (!visitors[ip].visitedLocations.includes(loc)){
-    visitors[ip].visitedLocations.push(loc);
+  if (!visitors[id].visitedLocations.includes(loc)){
+    visitors[id].visitedLocations.push(loc);
   }
 
-  res.status(200).send(visitors[ip].visitedLocations);
+  linkedloc = locations[loc].linkedTo;
+  if (visitors[id].visitedLocations.includes(linkedloc.toString())){
+    if (!completedUsers.includes(id)){
+      completedUsers.push(id);
+    }
+  }
+
+  res.status(200).send(visitors[id].visitedLocations);
 })
 
 app.get("/counter", (req, res) => {
-  res.status(200).send(counter.toString());
+  res.status(200).send(completedUsers.length.toString());
 })
 
 app.post("/increment", (req, res) => {
