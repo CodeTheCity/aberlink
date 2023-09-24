@@ -13,29 +13,8 @@ div .frame {
     position: fixed; /* Fixed position to cover the entire viewport */
     top: 0;
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     z-index: 1; /* Adjust the z-index as needed */
-}
-
-/* Create an overlay to cover most of the center part */
-div .overlay {
-    width: 250px; /* Adjust the width as needed to control how much it covers */
-    height: 100%;
-    background-color: rgba(0, 0, 0, 1); /* Semi-transparent background */
-    position: absolute; /* Absolute position within the .frame */
-    top: 0;
-    
-    z-index: -1; /* Place it behind the .centered-content */
-}
-
-div .overlay.left {
-    left: 0;
-}
-
-div .overlay.right {
-    right: 0;
 }
 
 @keyframes celebrationAnimation {
