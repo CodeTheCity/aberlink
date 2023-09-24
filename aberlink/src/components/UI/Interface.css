@@ -1,7 +1,6 @@
 .interface{
     position: absolute;
     top: 10px;
-    left: 260px;
     width: 150px;
     background-color: rgba(210, 231, 226, 0.788); /* Background color for the centered content */
     padding: 10px; /* Add padding for spacing */

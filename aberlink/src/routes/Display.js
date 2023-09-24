@@ -10,13 +10,17 @@ import './Display.css'
 const Display = () => {
 
   const {id} = useParams();
+  let altID = 0;
+  if (id == 1){
+    altID = 2;
+  } else {
+    altID = 1;
+  }
 
   return (
 
     <div className="frame">
-      <div class="overlay left"/>
-      <div class="overlay right"/>
-      <VideoStream embedId={'E9iP8jdtYZ0'} />
+      <VideoStream channelID={`aberlink${altID}`} />
       <Interface loc={id} />
     </div>
   )
