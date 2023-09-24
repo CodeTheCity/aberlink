@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Interface.css';
 
+import { useInterval } from "../../useInterval";
+
+
 const Counter = props => {
 
-    const count = 100;
+    const getCount = async () => {
+        let count = useState;
+
+        await fetch(`${global.config.API_URL}/counter`)
+        .then(res => res.text())
+        .then(text => count = text);
+        
+        return count
+    }
+
+    const [count, setCount] = useState(-1);
+
+    useInterval(async () => {
+        
+        setCount(await getCount());
+    }, 1000);
 
     return (
         <>

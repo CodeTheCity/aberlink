@@ -1,5 +1,6 @@
 const express = require("express");
 require('dotenv').config();
+const cors = require('cors');
 
 const URL = process.env.URL || "api.aberlink.jbritain.net";
 const SITE_URL = process.env.SITE_URL || "aberlink.jbritain.net";
@@ -9,6 +10,7 @@ let counter = 0;
 
 
 var app = express();
+app.use(cors());
 
 app.get("/visit/:loc", (req, res) => {
   const loc = req.params.loc;
