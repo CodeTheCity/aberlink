@@ -5,7 +5,8 @@ const Instructions = props => {
 
     return (
         <div className="text">
-            <p>Scan QR code here</p>
+            <p>This Counter shows how many people have been to both sides of this portal.</p>
+            <p>After you scan the qr code down below, head over to location{props.loc} to scan the second qr code and increase the counter! </p>
         </div>
     )
 }
